@@ -1,0 +1,91 @@
+definitions:
+  models.AuthRequest:
+    properties:
+      token:
+        example: ""
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /auth/vercel:
+    post:
+      consumes:
+      - application/json
+      description: Obtiene un token de autenticación de Vercel con email y contraseña
+      parameters:
+      - description: Datos de autenticación
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/models.AuthRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Autentica con Vercel
+      tags:
+      - Auth
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: Retorna productos filtrados por categoría y paginados
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Obtiene una lista de productos
+      tags:
+      - Products
+  /proxy/vercel/api/Productos/Stock:
+    get:
+      consumes:
+      - application/json
+      description: Proxy que reenvía solicitudes a la API de Vercel
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Redirecciona una solicitud a Vercel
+      tags:
+      - Proxy
+swagger: "2.0"

@@ -1,0 +1,15 @@
+# Binarios de Go
+*.exe
+*.out
+*.o
+
+# Módulos y caché
+/vendor/
+/bin/
+/obj/
+/tmp/
+/*.log
+
+# Archivos de configuración sensibles
+.env
+config.yaml
