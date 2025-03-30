@@ -22,9 +22,6 @@ func main() {
 			log.Println("Error cargando el archivo .env")
 		}
 	}
-	dbConexion := os.Getenv("DB_CONEXION")
-	log.Println("db:", dbConexion)
-	fmt.Println(dbConexion)
 	// Configuración de MongoDB
 	mongoRepo, err := infrastructuredb.NewMongoRepository()
 	if err != nil {
