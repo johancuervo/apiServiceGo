@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
 	_ "github.com/johancuervo/apiServiceGo/docs"
@@ -15,9 +16,11 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if _, err := os.Stat(".env"); err == nil {
+		err := godotenv.Load()
+		if err != nil {
+			log.Println("Error cargando el archivo .env")
+		}
 	}
 	// Configuración de MongoDB
 	mongoRepo, err := infrastructuredb.NewMongoRepository()
