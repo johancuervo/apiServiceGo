@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/johancuervo/apiServiceGo/src/application"
@@ -44,7 +45,7 @@ func (h *ProxyHandler) HandleProxyRequest(c *fiber.Ctx) error {
 
 	// Construimos la URL destino
 	path := c.Params("*")
-	baseURL := "https://sil-recibo-despacho-nodejs-git-desarrollo-johancuervos-projects.vercel.app"
+	baseURL := os.Getenv("URL_EXTERNA")
 	targetURL := baseURL + "/" + path
 
 	// Hacemos la solicitud a Vercel
