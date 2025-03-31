@@ -47,7 +47,6 @@ func (h *ProxyHandler) HandleProxyRequest(c *fiber.Ctx) error {
 	path := c.Params("*")
 	baseURL := os.Getenv("URL_EXTERNA")
 	targetURL := baseURL + "/" + path
-	log.Printf("URLEXTERNA: %s", targetURL)
 	// Hacemos la solicitud a Vercel
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", targetURL, nil)
