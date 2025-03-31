@@ -13,3 +13,4 @@
 # Archivos de configuración sensibles
 .env
 config.yaml
+*.Identifier
